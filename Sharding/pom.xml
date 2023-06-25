@@ -9,17 +9,17 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>SpringBoot</artifactId>
+    <artifactId>Sharding</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SpringBoot</name>
-    <description>SpringBoot</description>
+    <name>Sharding</name>
+    <description>Sharding</description>
     <properties>
-        <java.version>8</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
