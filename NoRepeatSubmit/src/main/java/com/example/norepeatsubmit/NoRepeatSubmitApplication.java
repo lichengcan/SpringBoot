@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author lichengcan
+ * 防止重复提交的自定义注解
  */
 @SpringBootApplication
 @ComponentScan("com.example.norepeatsubmit.*")
