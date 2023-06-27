@@ -2,18 +2,6 @@ server:
   port: 8085
   application:
     name: no-repeat
-  datasource:
-    url: jdbc:mysql://${mysql.host:localhost}:${mysql.port:3306}/mrv_collect?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ${mysql.username:root}
-    password: ${mysql.password:root}
-    type: com.zaxxer.hikari.HikariDataSource
-    hikari:
-      minimum-idle: 10 #最小空闲连接
-      maximum-pool-size: 20 #最大连接数
-      idle-timeout: 500000 #空闲连接超时时间
-      max-lifetime: 540000 #连接最大存活时间
-      connection-timeout: 60000 #连接超时时间：毫秒
   redis:
     database: ${redis.database:0}
     port: ${redis.port:6379}
