@@ -1,16 +1,13 @@
-package com.example.sharding;
+package com.example.norepeatsubmit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/**
- * @author lichengcan
- */
 @SpringBootApplication
-public class ShardingApplication {
+public class NoRepeatSubmitApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ShardingApplication.class, args);
+        SpringApplication.run(NoRepeatSubmitApplication.class, args);
     }
 
 }
