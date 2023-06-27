@@ -6,8 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author Alan.hao
- * @data 2022/10/25 15:23
+ * @author lichengcan
+ * @data 2023/06/27 15:23
  * @description 重复提交
  */
 @Target(ElementType.METHOD) // 作用到方法上

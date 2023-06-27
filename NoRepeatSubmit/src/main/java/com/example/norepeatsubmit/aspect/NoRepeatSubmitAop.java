@@ -2,17 +2,23 @@ package com.example.norepeatsubmit.aspect;
 
 
 import cn.hutool.crypto.SecureUtil;
+import com.example.norepeatsubmit.exception.ResultException;
+import com.example.norepeatsubmit.redis.RedisRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author Alan.hao
+ * @author lichengcan
  * @data 2022/10/25 15:32
  * @description 定义一个防止重复提交切面
  */
@@ -21,15 +27,19 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class NoRepeatSubmitAop {
 
-    @Autowired
-    private RedisRepository redisRepository;
+
+    private final RedisRepository redisRepository;
+
+    public NoRepeatSubmitAop(RedisRepository redisRepository) {
+        this.redisRepository = redisRepository;
+    }
 
     private static final String UNKNOWN = "unknown";
 
     /**
      * 切入点
      */
-    @Pointcut("@annotation(com.tencent.collect.annotation.NoRepeatSubmit)")
+    @Pointcut("@annotation(com.example.norepeatsubmit.annotation.NoRepeatSubmit)")
     public void pointcut() {
     }
 
@@ -53,13 +63,13 @@ public class NoRepeatSubmitAop {
             //返回结果
             return o;
         } else {
-            throw new ResultException(CollectResultCode.CACHE_ERROR);
+            throw new ResultException("12345","something is wrong");
         }
-
     }
 
     /**
      * 获取客户端IP地址
+     *
      * @param request 请求
      */
     public static String getRemoteAddr(HttpServletRequest request) {
@@ -79,7 +89,7 @@ public class NoRepeatSubmitAop {
         if (ip == null || ip.length() == 0 || UNKNOWN.equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
-        return StringUtils.split(ip, ",")[0];
+        return StringUtils.split(ip, ".")[0];
     }
 
 }
