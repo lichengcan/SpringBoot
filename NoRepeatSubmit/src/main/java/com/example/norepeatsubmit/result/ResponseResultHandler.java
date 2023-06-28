@@ -1,4 +1,4 @@
-package com.example.norepeatsubmit.exception;
+package com.example.norepeatsubmit.result;
 
 import com.alibaba.fastjson.JSON;
 import com.example.norepeatsubmit.annotation.ResponseResult;

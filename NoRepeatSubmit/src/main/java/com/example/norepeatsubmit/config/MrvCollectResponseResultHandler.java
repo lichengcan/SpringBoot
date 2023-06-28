@@ -1,6 +1,6 @@
 package com.example.norepeatsubmit.config;
 
-import com.example.norepeatsubmit.exception.ResponseResultHandler;
+import com.example.norepeatsubmit.result.ResponseResultHandler;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
 /**

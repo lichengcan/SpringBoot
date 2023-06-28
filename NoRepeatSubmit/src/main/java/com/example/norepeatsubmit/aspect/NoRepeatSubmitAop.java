@@ -2,7 +2,7 @@ package com.example.norepeatsubmit.aspect;
 
 
 import cn.hutool.crypto.SecureUtil;
-import com.example.norepeatsubmit.exception.ResultException;
+import com.example.norepeatsubmit.result.ResultException;
 import com.example.norepeatsubmit.redis.RedisRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;

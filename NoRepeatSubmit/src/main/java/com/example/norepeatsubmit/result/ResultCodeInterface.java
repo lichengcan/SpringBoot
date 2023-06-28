@@ -1,4 +1,4 @@
-package com.example.norepeatsubmit.exception;
+package com.example.norepeatsubmit.result;
 
 /**
  * @author: lichengcan
