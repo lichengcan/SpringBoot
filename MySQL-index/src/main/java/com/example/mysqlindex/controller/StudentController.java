@@ -2,14 +2,16 @@ package com.example.mysqlindex.controller;
 
 import com.example.mysqlindex.repository.StudentsMapper;
 import com.example.mysqlindex.model.entity.Students;
+import org.hibernate.type.descriptor.DateTimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author: lichengcan
@@ -27,9 +29,9 @@ public class StudentController {
     StudentsMapper studentsMapper;
 
     @PostMapping("/students")
-    public void student(){
+    public void createStudent() {
         List<Students> studentsList = new ArrayList<>();
-        for (int i = 0; i < 10000000; i++) {
+        for (int i = 0; i < 10000; i++) {
             Students students = new Students();
             students.setAge(generateRandomAge());
             students.setName(generateRandomName());
@@ -38,6 +40,22 @@ public class StudentController {
             studentsList.add(students);
         }
         studentsMapper.saveAllAndFlush(studentsList);
+    }
+
+    @GetMapping("/students")
+    public List<Students> getStudent(String name) {
+        long startTime = System.currentTimeMillis();
+        Students Students = new Students();
+        Students.setName(name);
+        //模糊查询匹配开头，即{name}%
+        ExampleMatcher matcher = ExampleMatcher.matching()
+                .withMatcher("name", ExampleMatcher.GenericPropertyMatchers.startsWith());
+        Example<Students> example = Example.of(Students ,matcher);
+        List<Students> list = studentsMapper.findAll(example);
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+        System.out.println("方法执行耗时: " + duration + " 毫秒");
+        return list;
     }
 
     private static String generateRandomName() {
