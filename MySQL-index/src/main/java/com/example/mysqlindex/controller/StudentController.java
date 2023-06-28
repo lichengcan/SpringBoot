@@ -48,8 +48,8 @@ public class StudentController {
         Students Students = new Students();
         Students.setName(name);
         //模糊查询匹配开头，即{name}%
-        ExampleMatcher matcher = ExampleMatcher.matching()
-                .withMatcher("name", ExampleMatcher.GenericPropertyMatchers.startsWith());
+        ExampleMatcher matcher = ExampleMatcher.matching();
+//                .withMatcher("name", ExampleMatcher.GenericPropertyMatchers.startsWith());
         Example<Students> example = Example.of(Students ,matcher);
         List<Students> list = studentsMapper.findAll(example);
         long endTime = System.currentTimeMillis();
