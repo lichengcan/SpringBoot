@@ -10,7 +10,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>demo</module>
+        <module>MySQL-index</module>
+        <module>NoRepeatSubmit</module>
+        <module>sharding-jdbc</module>
+        <module>spring-boot-data-jpa-mysql</module>
     </modules>
 
 
