@@ -1,6 +1,6 @@
 package com.example.mysqlindex.controller;
 
-import com.example.mysqlindex.dao.StudentsMapper;
+import com.example.mysqlindex.repository.StudentsMapper;
 import com.example.mysqlindex.model.entity.Students;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,11 +29,11 @@ public class StudentController {
     @PostMapping("/students")
     public void student(){
         List<Students> studentsList = new ArrayList<>();
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 10000000; i++) {
             Students students = new Students();
             students.setAge(generateRandomAge());
             students.setName(generateRandomName());
-            students.setGender(generateRandomPhoneNumber());
+            students.setTel(generateRandomPhoneNumber());
             students.setGrade(generateRandomAge());
             studentsList.add(students);
         }

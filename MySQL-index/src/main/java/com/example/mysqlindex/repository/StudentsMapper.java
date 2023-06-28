@@ -1,4 +1,4 @@
-package com.example.mysqlindex.dao;
+package com.example.mysqlindex.repository;
 
 import com.example.mysqlindex.model.entity.Students;
 import org.springframework.data.jpa.repository.JpaRepository;

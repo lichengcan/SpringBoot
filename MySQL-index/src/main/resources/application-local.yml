@@ -8,4 +8,11 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${mysql.username:root}
     password: ${mysql.password:root}
+  jpa:
+    properties:
+      hibernate:
+        id:
+          new_generator_mappings: false
+        default_value_generator: org.hibernate.id.enhanced.SequenceStyleGenerator
+        default_sequence_name: students_seq
 
