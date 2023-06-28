@@ -30,6 +30,8 @@ public class StudentController {
 
     @PostMapping("/students")
     public void createStudent() {
+        long startTime = System.currentTimeMillis();
+
         List<Students> studentsList = new ArrayList<>();
         for (int i = 0; i < 10000; i++) {
             Students students = new Students();
@@ -40,6 +42,9 @@ public class StudentController {
             studentsList.add(students);
         }
         studentsMapper.saveAllAndFlush(studentsList);
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+        System.out.println("方法执行耗时: " + duration + " 毫秒");
     }
 
     @GetMapping("/students")
