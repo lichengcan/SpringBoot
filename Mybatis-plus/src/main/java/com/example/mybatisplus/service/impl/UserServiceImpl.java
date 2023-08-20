@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.mybatisplus.entity.UserDO;
 import com.example.mybatisplus.mapper.UserMapper;
 import com.example.mybatisplus.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,4 +14,11 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class UserServiceImpl  extends ServiceImpl<UserMapper,UserDO>  implements UserService {
+    @Autowired
+    UserMapper userMapper;
+
+    @Override
+    public UserDO getById(Long id) {
+        return userMapper.selectById(id);
+    }
 }

@@ -2,7 +2,6 @@ package com.example.mybatisplus.controller;
 
 import com.example.mybatisplus.entity.UserDO;
 import com.example.mybatisplus.service.UserService;
-import com.example.mybatisplus.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +21,8 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/getById")
-    public UserDO getById(@RequestParam Long id){
-         UserDO byId = userService.getById(id);
-        return byId;
+    public UserDO getById(@RequestParam Long id) {
+        UserDO userDO = userService.getById(id);
+        return userDO;
     }
 }
